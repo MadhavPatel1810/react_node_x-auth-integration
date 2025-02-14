@@ -1,0 +1,200 @@
+.xauth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #000, #1a1a1a);
+  font-family: "Poppins", sans-serif;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  // Animated Background Logos
+  .xauth-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    .xauth-logo {
+      position: absolute;
+      font-size: 10rem;
+      opacity: 0.1;
+      animation: float 10s infinite ease-in-out;
+      &.xauth-logo-x {
+        top: 10%;
+        left: 10%;
+        color: white;
+      }
+      &.xauth-logo-twitter {
+        top: 50%;
+        right: 10%;
+        img {
+          width: 150px;
+          height: auto;
+        }
+      }
+    }
+  }
+  // Main Content
+  .xauth-content {
+    width: 100%;
+    z-index: 1;
+    .xauth-title {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      animation: fadeIn 2s ease-in-out;
+      .xauth-highlight {
+        color: #1da1f2;
+        animation: glow 1.5s infinite alternate;
+      }
+    }
+    .xauth-tagline {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      animation: slideIn 1.5s ease-in-out;
+    }
+    .xauth-features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 30px;
+      text-align: left;
+      animation: fadeIn 2s ease-in-out;
+      li {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        padding-left: 20px;
+        position: relative;
+        animation: slideInLeft 1s ease-in-out;
+        animation-fill-mode: both;
+        &::before {
+          content: "✔";
+          position: absolute;
+          left: 0;
+          color: #1da1f2;
+        }
+        // Delay animations for each list item
+        &:nth-child(1) {
+          animation-delay: 0.2s;
+        }
+        &:nth-child(2) {
+          animation-delay: 0.4s;
+        }
+        &:nth-child(3) {
+          animation-delay: 0.6s;
+        }
+        &:nth-child(4) {
+          animation-delay: 0.8s;
+        }
+      }
+    }
+    .xauth-button {
+      padding: 15px 30px;
+      font-size: 1rem;
+      color: white;
+      background: linear-gradient(135deg, #1da1f2, #0e71a8);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      .xauth-button-text {
+        z-index: 1;
+      }
+      .xauth-button-icon {
+        z-index: 1;
+        transition: transform 0.3s ease;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #0e71a8, #1da1f2);
+        transition: left 0.3s ease;
+      }
+      &:hover {
+        transform: translateY(-3px);
+        &::before {
+          left: 0;
+        }
+        .xauth-button-icon {
+          transform: translateX(5px);
+        }
+      }
+      &:disabled {
+        background: #aab8c2;
+        cursor: not-allowed;
+        &::before {
+          display: none;
+        }
+      }
+    }
+    .xauth-error {
+      color: #ff6b6b;
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #1da1f2, 0 0 10px #1da1f2;
+  }
+  to {
+    text-shadow: 0 0 15px #1da1f2, 0 0 20px #1da1f2;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
