@@ -22,7 +22,7 @@ This project demonstrates how to implement **Twitter (now X) login** using **X A
   - React.js (Vite)
   - Axios (for API calls)
   - React Router (for routing)
-  - Tailwind CSS (optional, for styling)
+  - SCSS (optional, for styling)
 - **Backend**:
   - Node.js
   - Express.js
@@ -35,20 +35,23 @@ This project demonstrates how to implement **Twitter (now X) login** using **X A
 ### Frontend
 - `react`: ^18.2.0
 - `react-dom`: ^18.2.0
-- `vite`: ^4.0.0
-- `axios`: ^1.5.0
-- `react-router-dom`: ^6.14.0
+- `vite`: ^5.0.8
+- `axios`: ^1.7.9
+- `react-router-dom`: ^6.21.1
 
 ### Backend
-- `express`: ^4.18.2
+- `express`: ^4.21.2
 - `cors`: ^2.8.5
-- `axios`: ^1.5.0
-- `dotenv`: ^16.3.1 (for environment variables)
+- `twitter-api-v2`: ^1.19.1
+- `dotenv`: ^16.4.7 (for environment variables)
 
 ---
 
-## How to Run the Project
-### Frontend
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/repo-name.git
+## References
+- [X Auth 2.0 Documentation](https://developer.twitter.com/en/docs/authentication/oauth-2-0)
+- [React.js Documentation](https://react.dev/)
+- [Vite Documentation](https://vitejs.dev/)
+- [Express.js Documentation](https://expressjs.com/)
+- [Axios Documentation](https://axios-http.com/)
+
+---
