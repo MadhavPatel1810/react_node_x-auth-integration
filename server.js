@@ -37,7 +37,18 @@ app.post("/api/x/user", async (req, res) => {
     }
     const client = new TwitterApi(token);
     const { data: userWithFields } = await client.v2.me({
-      "user.fields": ["profile_image_url", "name", "username", "id"],
+      "user.fields": [
+        "id",
+        "name",
+        "username",
+        "profile_image_url",
+        "description",
+        "location",
+        "public_metrics",
+        "verified",
+        "created_at",
+        "url",
+      ],
     });
     res.json({
       user: userWithFields,
