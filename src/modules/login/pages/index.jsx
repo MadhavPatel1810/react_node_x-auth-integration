@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
-import { useTwitterAuth } from "@/components/hooks/useTwitterAuth";
 import twitterLogo from "@/assets/images/png/twitter.png";
+import { useTwitterAuth } from "@/components/hooks/useTwitterAuth";
 
 const Login = () => {
   const { loginWithTwitter, isLoading, error } = useTwitterAuth();
