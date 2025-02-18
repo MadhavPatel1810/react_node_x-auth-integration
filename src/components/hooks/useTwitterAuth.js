@@ -40,7 +40,6 @@ export const useTwitterAuth = () => {
       const codeVerifier = generateCodeVerifier();
       const codeChallenge = await generateCodeChallenge(codeVerifier);
       // Store the code verifier in cookies
-      console.log("'check==>", cookieKeys, cookieKeys?.CODE_VERIFIER);
       Cookies.set(cookieKeys?.CODE_VERIFIER, codeVerifier);
       const params = new URLSearchParams({
         response_type: "code",
