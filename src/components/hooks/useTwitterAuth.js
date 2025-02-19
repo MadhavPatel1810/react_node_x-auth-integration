@@ -41,14 +41,18 @@ export const useTwitterAuth = () => {
       const codeChallenge = await generateCodeChallenge(codeVerifier);
       // Store the code verifier in cookies
       Cookies.set(cookieKeys?.CODE_VERIFIER, codeVerifier);
+      // Generate a unique state value
+      const state =
+        "unique_state_value_" + Math.random().toString(36).substring(7);
       const params = new URLSearchParams({
         response_type: "code",
         client_id: conf?.twitterClientId,
         redirect_uri: conf?.twitterRedirectUrl,
-        state: "madhavpatel_1810",
+        state,
         code_challenge: codeChallenge,
         code_challenge_method: "S256",
         scope: "tweet.read users.read",
+        prompt: "login",
       });
       window.location.href = `https://x.com/i/oauth2/authorize?${params.toString()}`;
     } catch (error) {
