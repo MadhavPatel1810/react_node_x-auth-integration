@@ -6,7 +6,13 @@ const crypto = require("crypto");
 const axios = require("axios");
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || "http://localhost:3000", 
+  methods: "GET,POST,PUT,DELETE",
+  credentials: true, 
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -48,7 +54,7 @@ app.post("/api/x/request_token", async (req, res) => {
   }
 });
 
-// Step 3: Converting the request token to an access token 
+// Step 3: Converting the request token to an access token
 app.post("/api/x/access_token", async (req, res) => {
   const { oauth_token, oauth_verifier } = req.body;
   if (!oauth_token || !oauth_verifier) {
