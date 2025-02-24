@@ -66,7 +66,6 @@ app.post("/api/x/access_token", async (req, res) => {
         "Content-Type": "application/x-www-form-urlencoded",
       },
     });
-    // Convert response string into object
     const responseData = new URLSearchParams(response.data);
     res.json({
       oauth_token: responseData.get("oauth_token"),
