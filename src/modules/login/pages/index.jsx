@@ -2,11 +2,15 @@ import { Helmet } from "react-helmet";
 import twitterLogo from "@/assets/images/png/twitter.png";
 import { useTwitterAuth } from "@/components/hooks/useTwitterAuth";
 import Cookies from "@/services/cookies";
+import { useEffect } from "react";
 
 const Login = () => {
   const { loginWithTwitter, isLoading, error } = useTwitterAuth();
 
-  Cookies.set("login", "true");
+  useEffect(() => {
+    Cookies.set("login", "true");
+    console.log("Cookie set attempt");
+  }, []);
 
   return (
     <>
