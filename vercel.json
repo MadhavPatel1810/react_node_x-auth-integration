@@ -5,5 +5,8 @@
         "dest": "/index.html",
         "status": 200
       }
-    ]
+    ],
+    "build": {
+      "ignoreCommand": "if [ \"$VERCEL_GIT_BRANCH\" != \"frontend/reactjs\" ]; then exit 1; fi"
+    }
   }
