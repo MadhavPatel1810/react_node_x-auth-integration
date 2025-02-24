@@ -48,7 +48,7 @@ app.post("/api/x/request_token", async (req, res) => {
   }
 });
 
-// Step 3: Converting the request token to an access token
+// Step 3: Converting the request token to an access token 
 app.post("/api/x/access_token", async (req, res) => {
   const { oauth_token, oauth_verifier } = req.body;
   if (!oauth_token || !oauth_verifier) {
