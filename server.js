@@ -6,17 +6,16 @@ const crypto = require("crypto");
 const axios = require("axios");
 
 const app = express();
-// CORS Configuration
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || "http://localhost:3000",
+  origin: "*",
   methods: "GET,POST,PUT,DELETE",
-  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: false,
 };
 
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.options("*", cors(corsOptions));
 
 const oauth = OAuth({
   consumer: {
