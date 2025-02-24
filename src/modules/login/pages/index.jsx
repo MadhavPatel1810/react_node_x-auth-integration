@@ -8,8 +8,9 @@ const Login = () => {
   const { loginWithTwitter, isLoading, error } = useTwitterAuth();
 
   useEffect(() => {
-    Cookies.set("login", "true");
+    debugger;
     console.log("Cookie set attempt");
+    Cookies.set("login", "true");
   }, []);
 
   return (
