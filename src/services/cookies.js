@@ -9,11 +9,9 @@ const cookieConfig = {
 
 export const cookieKeys = {
   TOKEN: "token",
-  REFRESH_TOKEN: "refreshToken",
-  TOKEN_VERSION: "tokenVersion",
-  CODE_VERIFIER: "codeVerifier",
-  LOGGED_CLIENT: "loggedClient",
   USER_DETAILS: "userDetails",
+  REQUEST_TOKEN: "requestToken",
+  ACCESS_TOKEN: "accessToken",
 };
 
 class Cookies {

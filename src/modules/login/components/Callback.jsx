@@ -1,36 +1,42 @@
 import { useEffect } from "react";
 import { toast } from "react-toastify";
+import Loader from "@/components/common/loaders/Loader";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useTwitterAuth } from "@/components/hooks/useTwitterAuth";
 
 const Callback = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const code = searchParams?.get("code");
-  const authError = searchParams?.get("error");
-  const state = searchParams?.get("state");
+  const oauth_token = searchParams.get("oauth_token");
+  const oauth_verifier = searchParams.get("oauth_verifier");
+  const denied = searchParams.get("denied");
   const { handleCallback, isLoading, error } = useTwitterAuth();
 
   useEffect(() => {
-    if (authError) {
-      if (authError === "access_denied") {
-        toast.error("You denied access to the app. Please try again.");
-      } else {
-        toast.error(
-          "An error occurred during authorization. Please try again."
-        );
-      }
+    if (denied) {
+      // Case 1: User denied authorization
+      toast.error("You denied access to the app. Please try again.");
       navigate("/");
-    } else if (code) {
-      handleCallback(code);
+    } else if (oauth_token && oauth_verifier) {
+      // Case 2 & 3: User is signed in (either approved or needs to approve)
+      handleCallback({ oauth_token, oauth_verifier });
+    } else {
+      // Case 4: Unexpected error or missing data
+      toast.error("Authentication failed. Please try again.");
+      navigate("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [code, authError, state]);
+  }, [oauth_token, oauth_verifier, denied]);
 
   return (
-    <div>
-      {isLoading ? <p>Loading...</p> : null}
-      {error ? <p style={{ color: "red" }}>{error.message}</p> : null}
+    <div className="callback-container">
+      {isLoading && <Loader />}
+      {!error && (
+        <div className="error-box">
+          <p>{"error?.message"}</p>
+          <button onClick={() => navigate("/")}>Go Back</button>
+        </div>
+      )}
     </div>
   );
 };

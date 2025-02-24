@@ -65,12 +65,12 @@ function Timeline() {
   return (
     <motion.div
       className="xauth-timeline"
-      initial={{ opacity: 0, y: -100 }}
+      initial={{ opacity: 0, x: -100 }}
       animate={{
         opacity: isVisible ? 1 : 0,
-        y: isVisible ? 0 : -100,
+        x: isVisible ? 0 : -100,
       }}
-      exit={{ opacity: 0, y: -100 }}
+      exit={{ opacity: 0, x: -100 }}
       transition={{ duration: 1 }}
     >
       <h4>{timelineEvents[currentTimeline]?.year}</h4>
