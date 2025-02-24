@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import Loader from "@/components/common/loaders/Loader";
-import { useNavigate, useSearchParams } from "react-router-dom";
 import { useTwitterAuth } from "@/components/hooks/useTwitterAuth";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Callback = () => {
   const navigate = useNavigate();
