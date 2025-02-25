@@ -9,7 +9,7 @@ const Login = () => {
 
   useEffect(() => {
     debugger;
-    console.log("Cookie set attempt");
+    console.log("Cookie set attempt!");
     Cookies.set("login", "true");
   }, []);
 
@@ -56,7 +56,7 @@ const Login = () => {
               disabled={isLoading}
             >
               <span className="xauth-button-text">
-                {isLoading ? "Loading..." : "Sign in with X......"}
+                {isLoading ? "Loading..." : "Sign in with X....."}
               </span>
               <span className="xauth-button-icon">→</span>
             </button>
