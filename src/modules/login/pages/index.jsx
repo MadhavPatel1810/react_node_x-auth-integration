@@ -33,8 +33,8 @@ const Login = () => {
           {/* Features List */}
           <div className="set_content justify-content-center">
             <ul className="xauth-features">
-              <li>🚀 Seamless integration with X (Twitter) API</li>
-              <li>🔐 Secure OAuth 2.0 authentication flow</li>
+              <li>🚀 Seamless integration with X API</li>
+              <li>🔐 Secure OAuth 1.0a authentication flow</li>
               <li>💻 Built with modern React.js and hooks</li>
               <li>📱 Fully responsive and cross-platform</li>
             </ul>
