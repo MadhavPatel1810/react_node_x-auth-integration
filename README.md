@@ -2,18 +2,36 @@
 
 # Twitter (X) Login Integration
 
-This project demonstrates how to implement **Twitter (now X) login** using **X Auth 2.0** in a **React.js (Vite)** frontend and a **Node.js (Express)** backend. After logging in, the user's profile information (name, profile image, username, and ID) is displayed on the **My Profile** page.
+This project demonstrates how to implement **Twitter (now X) login** using **X Auth (OAuth 1.0a)** in a **React.js (Vite)** frontend and a **Node.js (Express)** backend. After logging in, the user's profile information (name, profile image, username, and ID) is displayed on the **My Profile** page.
 
 ---
 
 ## Features
-- **Frontend**: 
-  - Sign in with Twitter (X) button.
-  - Redirect to X Auth 2.0 for authentication.
+- **Frontend**:
+  - Sign in with X button.
+  - Redirect to X Auth for authentication.
   - Display logged-in user information (profile image, name, username, and ID).
 - **Backend**:
-  - Handle X Auth 2.0 token generation.
+  - Handle X OAuth 1.0a token requests.
+  - Implement login flow via request token, user redirection, and access token exchange.
   - Fetch user information using the X API.
+
+---
+
+## Authentication Flow (OAuth 1.0a)
+### Step 1: Obtaining a Request Token
+- Your X app must send a signed request to `POST oauth/request_token`.
+- The request includes `oauth_callback`, which is the URL-encoded redirect URL where the user will be sent after authentication.
+- Other parameters are handled by the OAuth signing process.
+
+### Step 2: Redirecting the User
+- Redirect the user to `GET oauth/authenticate` with the request token obtained in Step 1.
+- The website should issue an HTTP 302 redirect, while mobile/desktop apps should open the URL in a browser or embedded web view.
+
+### Step 3: Converting the Request Token to an Access Token
+- Exchange the request token for an access token via `POST oauth/access_token`.
+- This request must include the `oauth_verifier` obtained from Step 2.
+- The request token should be passed in the `oauth_token` header.
 
 ---
 
@@ -26,7 +44,7 @@ This project demonstrates how to implement **Twitter (now X) login** using **X A
 - **Backend**:
   - Node.js
   - Express.js
-  - X Auth 2.0 API
+  - OAuth 1.0a (X API Authentication)
   - CORS (for cross-origin requests)
 
 ---
@@ -42,16 +60,15 @@ This project demonstrates how to implement **Twitter (now X) login** using **X A
 ### Backend
 - `express`: ^4.21.2
 - `cors`: ^2.8.5
-- `twitter-api-v2`: ^1.19.1
+- `oauth-1.0a`: ^2.2.6
 - `dotenv`: ^16.4.7 (for environment variables)
 
 ---
 
 ## References
-- [X Auth 2.0 Documentation](https://developer.twitter.com/en/docs/authentication/oauth-2-0)
+- [X OAuth 1.0a Documentation](https://developer.twitter.com/en/docs/authentication/oauth-1-0a)
 - [React.js Documentation](https://react.dev/)
 - [Vite Documentation](https://vitejs.dev/)
 - [Express.js Documentation](https://expressjs.com/)
 - [Axios Documentation](https://axios-http.com/)
 
----
