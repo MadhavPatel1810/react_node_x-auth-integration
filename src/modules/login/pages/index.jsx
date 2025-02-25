@@ -1,17 +1,9 @@
 import { Helmet } from "react-helmet";
 import twitterLogo from "@/assets/images/png/twitter.png";
 import { useTwitterAuth } from "@/components/hooks/useTwitterAuth";
-import Cookies from "@/services/cookies";
-import { useEffect } from "react";
 
 const Login = () => {
   const { loginWithTwitter, isLoading, error } = useTwitterAuth();
-
-  useEffect(() => {
-    debugger;
-    console.log("Cookie set attempt!");
-    Cookies.set("login", "true");
-  }, []);
 
   return (
     <>
@@ -56,7 +48,7 @@ const Login = () => {
               disabled={isLoading}
             >
               <span className="xauth-button-text">
-                {isLoading ? "Loading..." : "Sign in with X....."}
+                {isLoading ? "Loading..." : "Sign in with X"}
               </span>
               <span className="xauth-button-icon">→</span>
             </button>
